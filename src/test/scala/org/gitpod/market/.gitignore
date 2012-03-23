@@ -1,0 +1,23 @@
+# sbt
+boot/
+lib_managed/
+target/
+.history
+
+# idea
+.idea/
+*.iml
+*.ipr
+*.iws
+out/
+
+# osx
+.DS_Store
+
+# vi
+*.swp
+
+# sanity check
+*.class
+*.jar
+build/
