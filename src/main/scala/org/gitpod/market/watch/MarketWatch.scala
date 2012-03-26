@@ -16,6 +16,12 @@ case object ShareStats
 case object AlreadyRegistered
 case object NotRegistered
 
+/**
+ * TODO: Document Me
+ *
+ * @author anatoly.polinsky
+ */
+
 class MarketWatch( val shareStats: ( immutable.Map[ActorRef, List[TickRate]],
                                      immutable.Map[ActorRef, List[TickRate]] ) => Any )
     extends Actor with ActorLogging {

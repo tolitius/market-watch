@@ -3,6 +3,12 @@ package org.gitpod.market.watch
 import org.gitpod.tick.TickRate
 import akka.actor.ActorRef
 
+/**
+ * TODO: Document Me
+ *
+ * @author anatoly.polinsky
+ */
+
 /* to start simple, assume the rate is per second. TODO: replace assumption with [[akka.util.Duration]] */
 
 class reportStats( val displayStats: ( String,  Map[ActorRef, Rate] ) => Any )
