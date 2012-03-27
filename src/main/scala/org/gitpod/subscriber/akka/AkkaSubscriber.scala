@@ -9,7 +9,7 @@ import org.gitpod.tick.{TickCount, BrokerTickCount}
  * @author anatoly.polinsky
  */
 
-class AkkaSubscriber( feed: String ) extends Actor with ActorLogging {
+class AkkaSubscriber extends Actor with ActorLogging {
 
   private var ticksConsumed = 0L
 

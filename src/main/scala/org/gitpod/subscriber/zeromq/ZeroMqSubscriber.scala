@@ -4,6 +4,7 @@ import org.gitpod.tick.{BrokerTickCount, TickCount}
 import org.zeromq.ZMQ
 import akka.util.Duration
 import akka.actor.{Props, ActorLogging, Actor}
+import org.gitpod.market.config.MarketConfig
 
 /**
  * TODO: Document Me
@@ -28,14 +29,14 @@ class ZeroMqSubscriber( feed: String ) extends Actor with ActorLogging {
   val receiver = context.actorOf( Props ( new Actor {
     def receive = {
       case ReceiveIt =>
-        while( receiving ) {
+        while( MarketConfig.MARKET_OPEN_SECONDS hasTimeLeft ) {
           subscriber.recv( 0 ).asInstanceOf[Array[Byte]]
           ticksConsumed += 1
         }
         context.stop( self )
     }
   } ) )
-  
+
   def receive = {
 
     case ReceiveIt =>
@@ -46,7 +47,7 @@ class ZeroMqSubscriber( feed: String ) extends Actor with ActorLogging {
 
       sender ! BrokerTickCount( self, ticksConsumed )
 
-    case other => log.debug( "broker => " + other )
+    case other => log.info( "broker => " + other )
   }
 
   override def preStart {

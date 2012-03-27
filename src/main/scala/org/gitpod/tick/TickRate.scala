@@ -12,6 +12,6 @@ import akka.util.Duration
 class TickRate( val current: Long,  val previous: Long, val interval: Duration ) {
 
   def ratePerSecond = {
-    ( ( current - previous ).toDouble / interval.toSeconds )
+    ( ( current - previous ) / interval.toSeconds )
   }
 }

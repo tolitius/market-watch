@@ -1,11 +1,9 @@
 package org.gitpod.market
 
 import config.MarketConfig
-import org.gitpod.feed.{StreamTicks, MarketFeed}
+import org.gitpod.feed.StreamTicks
 import watch._
 import akka.actor.{Props, ActorSystem}
-import org.gitpod.publisher.zeromq.ZeroMqPublisher
-import org.gitpod.subscriber.zeromq.ZeroMqSubscriber
 
 /**
  * TODO: Document Me
@@ -17,12 +15,7 @@ object Market extends App {
 
   val system = ActorSystem( MarketConfig.MARKET_KIND )
 
-  // val publisher = system.actorOf( Props( new AkkaZeroMqPublisher( MarketConfig.NYSE_UNDERLYING ) ) )
-  val publisher = system.actorOf( Props( new ZeroMqPublisher( MarketConfig.NYSE_UNDERLYING ) ) )
-
-  val feed = system.actorOf( Props( new MarketFeed( publisher ) ), name = MarketConfig.NYSE_FEED )
-  // val broker = system.actorOf( Props( new AkkaZeroMqSubscriber( MarketConfig.NYSE ) ), name = MarketConfig.VIP_BROKER )
-  val broker = system.actorOf( Props( new ZeroMqSubscriber( MarketConfig.NYSE ) ), name = MarketConfig.VIP_BROKER )
+  val ( feed, broker ) = MarketConfig.configMeUp( system )
 
   feed ! StreamTicks( MarketConfig.STREAM_FOR_SECONDS fromNow )
 
@@ -31,7 +24,6 @@ object Market extends App {
 
   marketWatch ! RegisterFeed( MarketConfig.NYSE_FEED )
   marketWatch ! RegisterBroker( MarketConfig.VIP_BROKER )
-
 
   // ala context.setReceiveTimeout( MarketConfig.MARKET_OPEN_SECONDS )
   while ( MarketConfig.MARKET_OPEN_SECONDS.hasTimeLeft ) {}
