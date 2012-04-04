@@ -50,9 +50,11 @@ object sampleRates extends ( ( List[TickRate] ) => Rate ) {
 
 class statsToString extends ( ( String, Map[ActorRef, Rate] ) => Any ) {
 
+  val log = org.slf4j.LoggerFactory.getLogger( this.getClass )
+
   def apply( it: String, stats: Map[ActorRef, Rate] ) {
 
-    for ( ( id, rate ) <- stats ) { println( "%20s".format( "{"+ id.path.name + "}" ) + "\t => " + rate ) }
+    for ( ( id, rate ) <- stats ) { log.info( "%20s".format( "{"+ id.path.name + "}" ) + "\t => " + rate ) }
   }
 }
 

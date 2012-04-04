@@ -56,7 +56,7 @@ $ SBT_OPTS="-Djava.library.path=/usr/local/lib -Xms2G -Xmx3G" sbt -Dprofile=zmq 
 [freeMarket-akka.actor.default-dispatcher-5] [akka://freeMarket/user/marketWatch] registered a broker	 [vip.broker]
 
      {nyse.feed}	 => [ current rate:  1094854.0 ticks/s,   average rate:   1034253.0 ticks/s  ]
-    {vip.broker}	 => [ current rate:   296233.0 ticks/s,   average rate:    272157.0 ticks/s  ]
+    {vip.broker}	 => [ current rate:   319958.0 ticks/s,   average rate:    292413.0 ticks/s  ]
 ```
 
 ###Akka 2.0 Build In Mailbox

@@ -13,7 +13,8 @@ object ProjectBuild extends Build {
       scalaVersion := "2.9.1",
       resolvers += "Typesafe Releases" at "http://repo.typesafe.com/typesafe/releases",
       libraryDependencies += "com.typesafe.akka" % "akka-actor" % "2.0",
-      libraryDependencies +=  "com.typesafe.akka" % "akka-zeromq" % "2.0"
+      libraryDependencies +=  "com.typesafe.akka" % "akka-zeromq" % "2.0",
+      libraryDependencies +=  "ch.qos.logback" % "logback-classic" % "0.9.28"
     )
   )
 }

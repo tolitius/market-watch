@@ -33,7 +33,7 @@ class MarketFeed( publisher: ActorRef ) extends Actor with ActorLogging {
 
       sender ! FeedTickCount( self, ticksSent )
 
-    case other => println( "market feed => " + other )
+    case other => log.info( "market feed => " + other )
   }
 }
 
