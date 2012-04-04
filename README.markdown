@@ -1,4 +1,4 @@
-#What is Zakka?
+#What is Market Watch?
 ZeroMQ + AKKA playground, where several different approaches are compared:
 
 * Akka's 2.0 ZeroMQ module => JNA wrapper around ZeroMQ
@@ -20,7 +20,7 @@ It is a simplified versioned that does not imply the final numbers, and not gear
 
 It is built and runs with SBT by specifying a desired profile that starts a Market Simulation on top of:
 
-* "-Dprofile=zakka" => Akka 2.0 ZeroMQ module
+* "-Dprofile=akka.zmq" => Akka 2.0 ZeroMQ module
 * "-Dprofile=zmq" => ZeroMQ JNI API (JZMQ)
 * "-Dprofile=akka" => Akka's built in (default) mailboxes
 
@@ -35,7 +35,7 @@ zsocket ! ZMQMessage( Seq( Frame( destination ), Frame( tick ) ) )
 ```
 
 ```bash
-$ SBT_OPTS="-Djava.library.path=/usr/local/lib -Xms2G -Xmx3G" sbt -Dprofile=zakka clean run                           (master ✔) 
+$ SBT_OPTS="-Djava.library.path=/usr/local/lib -Xms2G -Xmx3G" sbt -Dprofile=akka.zmq clean run                           (master ✔) 
 
 [freeMarket-akka.actor.default-dispatcher-2] [akka://freeMarket/user/marketWatch] registered a feed     [nyse.feed]
 [freeMarket-akka.actor.default-dispatcher-2] [akka://freeMarket/user/marketWatch] registered a broker   [vip.broker]

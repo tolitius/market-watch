@@ -7,7 +7,7 @@ object ProjectBuild extends Build {
     id = "root",
     base = file("."),
     settings = Project.defaultSettings ++ Seq(
-      name := "zakka",
+      name := "market-watch",
       organization := "gitpod",
       version := "0.1-SNAPSHOT",
       scalaVersion := "2.9.1",

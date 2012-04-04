@@ -26,7 +26,7 @@ class AkkaZeroMqSubscriber( feed: String ) extends Actor with ActorLogging {
 
     case TickCount =>
 
-      sender ! BrokerTickCount(self, ticksConsumed)
+      sender ! BrokerTickCount( self, ticksConsumed )
 
     case other => log.debug( "broker => " + other )
   }

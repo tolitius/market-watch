@@ -36,7 +36,7 @@ object MarketConfig {
 
     val ( broker: ActorRef, publisher ) = sys.props.getOrElse( "profile", DEFAULT_PROFILE ) match {
 
-      case "zakka" =>
+      case "akka.zmq" =>
 
         ( system.actorOf( Props( new AkkaZeroMqSubscriber( MarketConfig.NYSE ) ), name = MarketConfig.VIP_BROKER ),
           system.actorOf( Props( new AkkaZeroMqPublisher( MarketConfig.NYSE_UNDERLYING ) ) ) )
